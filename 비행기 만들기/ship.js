@@ -2,11 +2,11 @@ var vcanvas, ctx;
 var sx, sy;
 var stype = 0; // You need to declare the 'stype' variable.
 
-function clearCanvas(){
+function clearCanvas() {
     ctx.clearRect(0, 0, vcanvas.width, vcanvas.height);
 }
 
-function drawShip(){
+function drawShip() {
     ctx.beginPath();
     ctx.fillStyle = "red";
     ctx.moveTo(sx-15, sy);
