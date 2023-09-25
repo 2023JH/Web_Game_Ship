@@ -75,7 +75,8 @@ function gameLoop() {
     drawShip();
     drawBullet();
     moveShip();
-    requestAnimationFrame(gameLoop); 
+    requestAnimationFrame(gameLoop); // Use requestAnimationFrame for smoother animation
+}
 
 function init() {
     vcanvas = document.getElementById("myCanvas");
@@ -87,7 +88,7 @@ function init() {
 
     document.addEventListener("keydown", keyDownHandler);
     document.addEventListener("keyup", keyUpHandler);
-    requestAnimationFrame(gameLoop); 
+    requestAnimationFrame(gameLoop); // Start the game loop using requestAnimationFrame
 }
 
 // Key Control
@@ -118,31 +119,31 @@ function stopKey(event) {
 
 // 방향키 이벤트 핸들러 함수 추가
 function keyDownHandler(event) {
-    if (event.keyCode === 37) { // 왼쪽방향키
+    if (event.key === "ArrowLeft") {
         leftPressed = true;
     }
-    if (event.keyCode === 39) { // 오른쪽방향키
+    if (event.key === "ArrowRight") {
         rightPressed = true;
     }
-    if (event.keyCode === 38) { // 위쪽방향키
+    if (event.key === "ArrowUp") {
         upPressed = true;
     }
-    if (event.keyCode === 40) { // 아래방향키
+    if (event.key === "ArrowDown") {
         downPressed = true;
     }
 }
 
 function keyUpHandler(event) {
-    if (event.keyCode === 37) { // 왼쪽방향키
+    if (event.key === "ArrowLeft") {
         leftPressed = false;
     }
-    if (event.keyCode === 39) { // 오른쪽방향키
+    if (event.key === "ArrowRight") {
         rightPressed = false;
     }
-    if (event.keyCode === 38) { // 위쪽방향키
+    if (event.key === "ArrowUp") {
         upPressed = false;
     }
-    if (event.keyCode === 40) { // 아래방향키
+    if (event.key === "ArrowDown") {
         downPressed = false;
     }
 }
