@@ -6,7 +6,7 @@ function clearCanvas() {
     ctx.clearRect(0, 0, vcanvas.width, vcanvas.height);
 }
 
-function drawShip() {
+function drawShip() {  
     ctx.beginPath();
     ctx.fillStyle = "red";
     ctx.moveTo(sx-15, sy);
