@@ -10,11 +10,12 @@ function clearCanvas_v16(){
 
 // Enemy
 function createEnemy_v16(){
-    if (arrEnemy_v16.length < 20) { // 배열에 있는 적의 수가 20개 미만인지 확인
+ //   if (arrEnemy_v16.length < 20) { // 배열에 있는 적의 수가 20개 미만인지 확인
     var x_v16, y_v16, wh_v16, c_v16, v_v16; // 선언
 
     wh_v16 = Math.floor(Math.random() * (30+1)) + 10;   // 정의
-    x_v16 = Math.floor(Math.random() * (vcanvas.width - wh_v16));
+    // x_v16 = Math.floor(Math.random() * (vcanvas.width - wh_v16)); //x 위치 랜덤
+    x_v16 = vcanvas.width;      // x위치 canvas 너비로 고정 (오른쪽 끝 생성)
     y_v16 = Math.floor(Math.random() * (vcanvas.height - wh_v16)); 
     c_v16 = "#" + parseInt(Math.random() * 0xffffff, 10).toString(16);
     v_v16 = Math.floor(Math.random() * 2) + 1;       // 1 or 2
@@ -23,10 +24,10 @@ function createEnemy_v16(){
     arrEnemy_v16.push({x: x_v16, y: y_v16, c: c_v16, wh: wh_v16, v:v_v16});
     }
     // 적의 개수가 20개를 넘는 경우 가장 먼저 생성된 적을 삭제
-    if (arrEnemy_v16.length > 20) {
-        arrEnemy_v16.shift(); 
-    }
-}
+    // if (arrEnemy_v16.length > 20) {
+    //     arrEnemy_v16.shift(); 
+    // }
+//}
 
 function drawEnemy_v16(){
     var i;
@@ -39,13 +40,13 @@ function drawEnemy_v16(){
 }
 
 function updateEnemy_v16(){ 
-    if (sp) { // sp가 1인 경우에만 업데이트 (정지 된 상태)
+   // if (sp) { // sp가 1인 경우에만 업데이트 (정지 된 상태)
         var i;
         for(i = 0; i < arrEnemy_v16.length; i+= 1){
             arrEnemy_v16[i].x -= arrEnemy_v16[i].v;
         }
     //enemy_v16.x -= enemy_v16.v; 
-    }
+   // }
 }
 
 function deleteEnemy_v16(){
@@ -72,7 +73,7 @@ function init(){
     ctx = vcanvas.getContext("2d");
 
     setInterval(createEnemy_v16, 1000);
-    setInterval(gameLoop, 500);
+    setInterval(gameLoop, 70);
 }
 
 //key control
