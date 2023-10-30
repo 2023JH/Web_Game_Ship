@@ -33,7 +33,7 @@ function updateShip() {
         sx = vcanvas.width - 15;
     }
     if ( stype === 4) {
-        h
+        h = 19;
     }
     if (sy - h < 0) {
         sy = h;

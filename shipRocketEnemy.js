@@ -113,15 +113,15 @@ function drawRocket() {
 
 // Enemy
 function createEnemy() {
-    var x_s12, y_s12, wh_s12, c_s12, v_s12;
+    var x, y, wh, c, v;
 
-    x_s12 = vcanvas.width;
-    y_s12 = Math.floor(Math.random() * vcanvas.height) + 1;
-    wh_s12 = Math.floor(Math.random() * 31) + 10;
-    c_s12 = "#" + parseInt(Math.random() * 0xffffff, 10).toString(16);
-    v_s12 = Math.floor(Math.random() * 3) + 1;
+    x = vcanvas.width;
+    y = Math.floor(Math.random() * vcanvas.height) + 1;
+    wh = Math.floor(Math.random() * 31) + 10;
+    c = "#" + parseInt(Math.random() * 0xffffff, 10).toString(16);
+    v = Math.floor(Math.random() * 3) + 1;
 
-    arrEnemy.push({ x: x_s12, y: y_s12, wh: wh_s12, v: v_s12, c: c_s12 });
+    arrEnemy.push({ x: x, y: y, wh: wh, v: v, c: c });
 }
 
 function updateEnemy() {
