@@ -43,7 +43,6 @@ function init() {
 }
 
 //key control
-
 function setKey(event){
     if(event.keycode === 37) { r_left = 1;}
     if(event.keycode === 38) { r_up = 1;}
@@ -56,5 +55,6 @@ function stopKey(event){
     if(event.keycode === 39) { r_right = 0;}
     if(event.keycode === 40) { r_down = 0;}
 }
-document.onkeyup();
-document.onkeydown();
+
+document.onkeydown = setKey;
+document.onkeyup = stopKey;
