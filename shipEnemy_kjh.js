@@ -27,6 +27,15 @@ function updateEnemy(){
     }
 }
 
+function deleteEnemy(){
+    var i;
+    for(i = 0; i < arrEnemy.length; i +=1 ){
+        if(arrEnemy[i].x > vcanvas.width){
+            arrEnemy.splice(i, 1);
+        }
+    }
+}
+
 function drawEnemy(){
     var i;
     for(i = 0; i < arrEnemy.length; i +=1 ){
@@ -77,7 +86,7 @@ function drawShip() {
 function info() {
     ctx.fillStyle = "white";
     ctx.font = "20px Arial";
-    ctx.fillText(arrEnemy.length, 50, 50);
+    ctx.fillText("Enemy: " + arrEnemy.length, 50, 50);
 }
 
 function gameLoop() {
@@ -87,6 +96,7 @@ function gameLoop() {
 
     drawEnemy();
     updateEnemy();
+    deleteEnemy();
 
     info();
 }
@@ -104,8 +114,8 @@ function init() {
 
 // key control
 function setKey(event) {
-    ctx.fillStyle = "white";
-    ctx.fillText(event.keyCode, 100, 100);
+  //  ctx.fillStyle = "white";
+  //  ctx.fillText(event.keyCode, 100, 100);
     if (event.keyCode === 37) { r_left = 1;}
     if (event.keyCode === 38) { r_up = 1;}
     if (event.keyCode === 39) { r_right = 1;}
