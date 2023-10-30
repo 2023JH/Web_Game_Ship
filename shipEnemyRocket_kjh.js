@@ -33,14 +33,20 @@ function createRocket() {
     }
 }
 
-
 function updateRocket(){
     var i;
     for(i=0; i < arrRocket.length; i += 1){
         arrRocket[i].x -= arrRocket[i].v;
     }
 }
-
+function deleteRocket(){
+    var i;
+    for(i = 0; i < arrRocket.length; i +=1 ){
+        if(arrRocket[i].x + 6 < 0){
+            arrRocket.splice(i, 1);
+        }
+    }
+}
 function drawRocket(){
     var i;
     for(i=0; i < arrRocket.length; i += 1){
@@ -139,6 +145,7 @@ function gameLoop() {
 
     drawRocket();
     updateRocket();
+    deleteRocket();
 
     info();
 }
