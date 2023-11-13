@@ -8,13 +8,28 @@ function clearCanvas(){
     ctx.clearRect(0, 0, vcanvas.width, vcanvas.height);
 }
 
+function distance(x1, y1, x2, y2){
+    var dx, dy;
+    dx = x2 - x1;
+    dy = y2 - y1;
+
+    return Math.sqrt(dx*dx + dy*dy);
+}
+
 function checkHit(rt, ct){
     var vResult = false;
     if( ct.x > rt.x - ct.r && 
         ct.x < rt.x + rt.w + ct.r &&
         ct.y > rt.y - ct.r &&
-        ct.y < rt.y + rt.h + ct.r ) {
-            vResult = true; // 조건에 맞으면  true 이다
+        ct.y < rt.y + rt.h + ct.r ) { // 큰사각형 안에 원의 중점이 들어있는 경우
+            vResult = true; // 조건에 맞으면 true 이다
+            if(ct.x < rt.x) { // 원의 중점이 좌측에 있는 경우
+                if(ct.y < rt.y) { // 원의 중점이 좌측 상단 모서리에 있는 경우
+                    if(distance(ct.x, ct.y, rt.x, rt.y) > ct.r) { vResult = false; }
+                } else if(ct.y > rt.y + rt.h) { // 원의 중점이 좌측 하단모서리에 있는 경우
+                    if(distance(ct.x, ct.y, rt.x, rt.y + rt.h) > ct.r) { vResult = false; }
+                }
+            }
         }
     return vResult;
 }
@@ -55,18 +70,39 @@ function drawRT(){
 }
 
 function drawExtend(){
-   // ctx.strokeRect(rt.x-ct.r, rt.y-ct.r, rt.w+ct.r*2 , rt.h+ct.r*2);
-    ctx.strokeStyle = "red";
+    ctx.strokeStyle = "green";
     ctx.setLineDash([1]);
 
+    ctx.strokeRect(rt.x-ct.r, rt.y-ct.r, rt.w+ct.r*2, rt.h+ct.r*2);
+
     ctx.beginPath();
+    ctx.moveTo(rt.x - ct.r, rt.y);
+    ctx.lineTo(rt.x + rt.w + ct.r, rt.y);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(rt.x, rt.y - ct.r);
+    ctx.lineTo(rt.x, rt.y + rt.h + ct.r);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(rt.x - ct.r, rt.y + rt.h);
+    ctx.lineTo(rt.x + rt.w + ct.r, rt.y + rt.h);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(rt.x + rt.w, rt.y - ct.r);
+    ctx.lineTo(rt.x + rt.w, rt.y + rt.h + ct.r);
+    ctx.stroke();
+
+/*
     ctx.moveTo(rt.x - ct.r, rt.y - ct.r);
     ctx.lineTo(rt.x + rt.w + ct.r, rt.y - ct.r);
     ctx.lineTo(rt.x + rt.w + ct.r, rt.y + rt.h + ct.r);
     ctx.lineTo(rt.x - ct.r, rt.y + rt.h + ct.r);
-    ctx.closePath();
-    
+    ctx.closePath();    
     ctx.stroke();
+*/
     ctx.setLineDash([0]);
     ctx.strokeStyle = "black";
 }
