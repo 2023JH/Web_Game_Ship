@@ -32,6 +32,8 @@ function checkHit(rt, ct){
             } else if(ct.x > rt.x + rt.w) { // 원의 중점이 사각형 '우'측 밖에 있는 경우
                 if(ct.y < rt.y) { // 원의 중점이 우측 상단 모서리에 있는 경우
                     if(distance(ct.x, ct.y, rt.x + rt.w, rt.y) > ct.r) { vResult = false; }
+                } else if (ct.y > rt.y + rt.h) { // 원의 중점이 우측 하단모서리에 있는 경우
+                    if (distance(ct.x, ct.y, rt.x + rt.w, rt.y + rt.h) > ct.r) { vResult = false; }
                 }
             }
         }
