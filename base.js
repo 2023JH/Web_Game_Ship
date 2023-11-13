@@ -16,6 +16,15 @@ function checkHit(rt, ct){
         ct.y < rt.y + rt.h + ct.r ) {
             vResult = true; // 조건에 맞으면  true 이다
         }
+    return vResult;
+}
+
+function info(){
+    if(checkHit(rt, ct)){
+        ctx.fillText("상태 : 충돌", 50, 50);
+    } else {
+        ctx.fillText("상태 : 미충돌", 50, 50)
+    }
 }
 
 function updateCT(){
@@ -68,6 +77,7 @@ function gameLoop(){
     drawCT();
     drawRT();
     drawExtend();
+    info();
 }
 
 function init() {
