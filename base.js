@@ -54,7 +54,7 @@ function updateCT(){
     if(r_right) {ct.x += ct.v}
     if(r_down) {ct.y += ct.v}
 }
-
+ 
 function drawCT(){
     ctx.beginPath();
     ctx.arc(ct.x, ct.y, ct.r, 0, Math.PI * 2);
