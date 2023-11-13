@@ -66,13 +66,29 @@ function drawCT(){
     //text
     ctx.fillText("(ct.x, ct.y)", ct.x - 30, ct.y + 10);
 }
-
+/*
 function drawRT(){
     ctx.strokeRect(rt.x, rt.y, rt.w, rt.h);
     ctx.fillText("(x0, y0)", rt.x - 20, rt.y - 5);
     ctx.fillText("(x0, y1)", rt.x - 20, rt.y + rt.h + 15);
     ctx.fillText("(x1, y0)", rt.x  + rt.w - 20, rt.y - 5);
     ctx.fillText("(x1, y1)", rt.x + rt.w -20, rt.y + rt.h + 15);
+}
+*/
+function drawRT() {
+    if (checkHit(rt, ct)) {
+        ctx.strokeStyle = "red"; // 충돌이 감지되면 색상을 빨간색으로 설정
+    } else {
+        ctx.strokeStyle = "black"; // 충돌이 없으면 기본 색상인 검은색으로 설정
+    }
+
+    ctx.strokeRect(rt.x, rt.y, rt.w, rt.h);
+    ctx.fillText("(x0, y0)", rt.x - 20, rt.y - 5);
+    ctx.fillText("(x0, y1)", rt.x - 20, rt.y + rt.h + 15);
+    ctx.fillText("(x1, y0)", rt.x + rt.w - 20, rt.y - 5);
+    ctx.fillText("(x1, y1)", rt.x + rt.w - 20, rt.y + rt.h + 15);
+
+    ctx.strokeStyle = "black"; // 다른 그림에 대한 효과를 위해 선 색상을 검은색으로 재설정
 }
 
 function drawExtend(){
