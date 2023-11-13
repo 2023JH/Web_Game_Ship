@@ -23,11 +23,15 @@ function checkHit(rt, ct){
         ct.y > rt.y - ct.r &&
         ct.y < rt.y + rt.h + ct.r ) { // 큰사각형 안에 원의 중점이 들어있는 경우
             vResult = true; // 조건에 맞으면 true 이다
-            if(ct.x < rt.x) { // 원의 중점이 좌측에 있는 경우
+            if(ct.x < rt.x) { // 원의 중점이 사각형 '좌'측에 있는 경우
                 if(ct.y < rt.y) { // 원의 중점이 좌측 상단 모서리에 있는 경우
                     if(distance(ct.x, ct.y, rt.x, rt.y) > ct.r) { vResult = false; }
                 } else if(ct.y > rt.y + rt.h) { // 원의 중점이 좌측 하단모서리에 있는 경우
                     if(distance(ct.x, ct.y, rt.x, rt.y + rt.h) > ct.r) { vResult = false; }
+                }
+            } else if(ct.x > rt.x + rt.w) { // 원의 중점이 사각형 '우'측 밖에 있는 경우
+                if(ct.y < rt.y) { // 원의 중점이 우측 상단 모서리에 있는 경우
+                    if(distance(ct.x, ct.y, rt.x + rt.w, rt.y) > ct.r) { vResult = false; }
                 }
             }
         }
