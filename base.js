@@ -10,6 +10,12 @@ function clearCanvas(){
 
 function checkHit(rt, ct){
     var vResult = false;
+    if( ct.x > rt.x - ct.r && 
+        ct.x < rt.x + rt.w + ct.r &&
+        ct.y > rt.y - ct.r &&
+        ct.y < rt.y + rt.h + ct.r ) {
+            vResult = true; // 조건에 맞으면  true 이다
+        }
 }
 
 function updateCT(){
